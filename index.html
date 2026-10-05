@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LEV SHCHERBAKOV gem — English A2+–B1</title>
+  <meta name="description" content="LEV SHCHERBAKOV gem — a mini-game website for learning English at A2+ to B1 level." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <header class="topbar">
+    <button class="brand" onclick="showHome()" aria-label="Go to home">
+      <span class="brand-gem">◆</span>
+      <span>LEV SHCHERBAKOV <b>gem</b></span>
+    </button>
+    <div class="header-stats">
+      <div class="stat"><span>XP</span><strong id="xpValue">0</strong></div>
+      <div class="stat"><span>Streak</span><strong id="streakValue">0🔥</strong></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="homeScreen" class="screen active">
+      <div class="hero">
+        <div class="eyebrow">ENGLISH TRAINING • A2+ → B1</div>
+        <h1>Learn English.<br><span>Play. Improve.</span></h1>
+        <p class="hero-copy">Short mini-games for vocabulary, grammar, spelling and sentence building. No boring worksheets.</p>
+
+        <div class="progress-card">
+          <div>
+            <div class="progress-title">Today’s progress</div>
+            <div class="progress-sub" id="progressText">0 / 100 XP</div>
+          </div>
+          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        </div>
+      </div>
+
+      <div class="game-grid">
+        <button class="game-card" onclick="startGame('match')">
+          <div class="game-icon icon-blue">↔</div>
+          <div class="game-info">
+            <span class="game-tag">VOCABULARY</span>
+            <h2>Word Match</h2>
+            <p>Match English words with their meanings.</p>
+            <small>8 rounds · A2+–B1</small>
+          </div>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="game-card" onclick="startGame('choice')">
+          <div class="game-icon icon-purple">?</div>
+          <div class="game-info">
+            <span class="game-tag">GRAMMAR</span>
+            <h2>Pick the Right One</h2>
+            <p>Choose the correct word or verb form.</p>
+            <small>10 questions · A2+–B1</small>
+          </div>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="game-card" onclick="startGame('build')">
+          <div class="game-icon icon-green">≡</div>
+          <div class="game-info">
+            <span class="game-tag">SENTENCES</span>
+            <h2>Build It</h2>
+            <p>Put the words in the correct order.</p>
+            <small>7 rounds · A2+–B1</small>
+          </div>
+          <span class="arrow">→</span>
+        </button>
+
+        <button class="game-card" onclick="startGame('spell')">
+          <div class="game-icon icon-orange">Aa</div>
+          <div class="game-info">
+            <span class="game-tag">SPELLING</span>
+            <h2>Spell Sprint</h2>
+            <p>Hear a word and type what you hear.</p>
+            <small>8 rounds · A2+–B1</small>
+          </div>
+          <span class="arrow">→</span>
+        </button>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-symbol">✦</div>
+        <div><b>Study tip</b><p>Try to say every answer out loud. Active recall helps the words stick.</p></div>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen">
+      <div class="game-header">
+        <button class="back-btn" onclick="showHome()">← Menu</button>
+        <div class="game-header-center">
+          <span id="gameCategory" class="eyebrow"></span>
+          <h1 id="gameTitle"></h1>
+        </div>
+        <div id="gameScore" class="live-score">0 XP</div>
+      </div>
+
+      <div class="game-panel">
+        <div class="question-top">
+          <div class="round-label" id="roundLabel">Round 1 / 8</div>
+          <div class="mini-progress"><div id="roundFill"></div></div>
+        </div>
+        <div id="gameContent"></div>
+        <div id="feedback"></div>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <div class="result-card">
+        <div class="result-gem">◆</div>
+        <div class="eyebrow">SESSION COMPLETE</div>
+        <h1 id="resultTitle">Nice work!</h1>
+        <p id="resultSubtitle"></p>
+
+        <div class="result-stats">
+          <div><span>Score</span><strong id="resultScore">0</strong></div>
+          <div><span>Correct</span><strong id="resultCorrect">0%</strong></div>
+          <div><span>XP earned</span><strong id="resultXp">+0</strong></div>
+        </div>
+
+        <div id="resultMessage" class="result-message"></div>
+
+        <div class="result-actions">
+          <button class="primary-btn" onclick="restartCurrentGame()">Play again</button>
+          <button class="secondary-btn" onclick="showHome()">Back to menu</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
